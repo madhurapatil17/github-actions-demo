@@ -7,6 +7,10 @@ app = Flask(__name__)
 def health():
     return jsonify({'status': 'ok', 'version': '1.0.0'})
 
+@app.route('/sum/<int:a>/<int:b>')
+def sum_nums(a, b):
+    return jsonify({'result': a + b})
+
 
 @app.route('/square/<int:n>')
 def square(n):
