@@ -8,6 +8,10 @@ def client():
     with app.test_client() as client:
         yield client
 
+def test_sum(client):
+    response = client.get('/sum/3/4')
+    assert response.get_json()['result'] == 7
+
 
 def test_health(client):
     response = client.get('/health')
